@@ -15,7 +15,6 @@ def version():
     return {"version": "0.1.0", "description": "SkinIQ API — AI skincare analyzer"}
 
 # To receive Data
-
 class AnalyzeRequest(BaseModel):
     prompt: str
     
