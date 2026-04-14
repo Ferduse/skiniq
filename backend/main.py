@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi import APIRouter
-from analyze import get_completion
+from rag import analyze_with_rag
 
 app = FastAPI()
 router = APIRouter()
@@ -20,4 +20,4 @@ class AnalyzeRequest(BaseModel):
     
 @app.post("/analyze")
 def analyze(request: AnalyzeRequest):
-    return {"response": get_completion(request.prompt)}
+    return {"response": analyze_with_rag(request.prompt)}

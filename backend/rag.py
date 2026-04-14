@@ -69,5 +69,3 @@ def analyze_with_rag(query):
     
 if __name__ == "__main__":
     embed_ingredients()
-    answer = analyze_with_rag("what is good for anti-aging?")
-    print(answer)

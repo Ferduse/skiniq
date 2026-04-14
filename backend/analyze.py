@@ -8,7 +8,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY")) # connection to OpenAI, gra
 
 # API call 
 # System prompts sets the rules, user message asks questions
-def get_completion(prompt, model="gpt-4o-mini", temperature=0):
+def get_completion(model="gpt-4o-mini"):
     messages=[
         {"role": "system", "content": "You are a skincare expert."},
         {"role": "user", "content": "What does niacinamide do?"}
