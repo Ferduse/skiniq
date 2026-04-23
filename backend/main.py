@@ -3,6 +3,8 @@ from pydantic import BaseModel
 from fastapi import APIRouter
 from rag import analyze_with_rag
 from fastapi.middleware.cors import CORSMiddleware
+from routine import build_routine, RoutineRequest
+
 app = FastAPI()
 router = APIRouter()
 
@@ -28,3 +30,7 @@ class AnalyzeRequest(BaseModel):
 @app.post("/analyze")
 def analyze(request: AnalyzeRequest):
     return {"response": analyze_with_rag(request.prompt)}
+
+@app.post("/routine")
+def routine(request: RoutineRequest):
+    return {"response": build_routine(request)}
