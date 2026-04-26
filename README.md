@@ -10,7 +10,7 @@ An AI-powered skincare app that analyzes ingredients and builds personalized rou
 
 ## What it does
 
-SkinIQ helps anyone understand what's in their skincare products and whether those products are safe to use together. Paste in an ingredient list and get a full breakdown of what each ingredient does and how safe it is. Tell SkinIQ your skin type and the products you own and it will build you a safe AM/PM routine — flagging dangerous combinations like retinoids and AHAs.
+SkinIQ helps anyone understand what's in their skincare products and whether those products are safe to use together. Paste in an ingredient list and get a full breakdown of what each ingredient does and how safe it is. Tell SkinIQ your skin type and the products you own and it will build you a safe AM/PM routine, flagging dangerous combinations like retinoids and AHAs.
 
 ## Features
 
