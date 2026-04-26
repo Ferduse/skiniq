@@ -2,17 +2,19 @@
 import { useState } from "react"
 import ReactMarkdown from 'react-markdown'
 
-export default function Home() {
-  const [ingredients, setIngredients] = useState("")
+export default function Routine() {
+  const [skinType, setSkinType] = useState("")
+  const [concern, setConcern] = useState("")
+  const [products, setProducts] = useState("")
   const [response, setResponse] = useState("")
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit() {
     setLoading(true)
-    const result = await fetch("http://localhost:8000/analyze", {
+    const result = await fetch("http://localhost:8000/routine", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: ingredients })
+      body: JSON.stringify({ skin_type: skinType, concerns: concern, products: products })
     })
     const data = await result.json()
     setResponse(data.response)
@@ -21,6 +23,7 @@ export default function Home() {
 
   return (
     <div>
+
       {/* Hero */}
       <div style={{
         background: "linear-gradient(135deg, #e8f0e8 0%, #f5f0ea 50%, #f5e8df 100%)",
@@ -41,7 +44,7 @@ export default function Home() {
           textTransform: "uppercase",
           marginBottom: "24px"
         }}>
-          AI-Powered Ingredient Analysis
+          AI-Powered Routine Builder
         </div>
 
         <h1 style={{
@@ -53,8 +56,8 @@ export default function Home() {
           lineHeight: "1.1",
           marginBottom: "16px"
         }}>
-          Know what's in<br/>
-          <em style={{ color: "#6b8c6e" }}>your products.</em>
+          Build your perfect<br/>
+          <em style={{ color: "#6b8c6e" }}>skincare routine.</em>
         </h1>
 
         <p style={{
@@ -62,76 +65,126 @@ export default function Home() {
           fontSize: "17px",
           fontWeight: "300",
           maxWidth: "480px",
-          margin: "0 auto 40px",
+          margin: "0 auto",
           lineHeight: "1.7"
         }}>
-          Paste any ingredient list and get an instant breakdown — safety scores, functions, and conflict warnings.
+          Tell us your skin type, concerns, and products — we'll build a personalized AM/PM routine with conflict warnings.
         </p>
-
-        <div style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "10px",
-          justifyContent: "center"
-        }}>
-          {[
-            "What ingredients are good for dry skin?",
-            "Is retinol safe for sensitive skin?",
-            "What conflicts with vitamin C?",
-            "Best ingredients for acne-prone skin"
-          ].map((suggestion) => (
-            <button
-              key={suggestion}
-              onClick={() => setIngredients(suggestion)}
-              style={{
-                background: "#ffffff",
-                border: "1px solid #d9cdb8",
-                borderRadius: "20px",
-                padding: "8px 18px",
-                fontSize: "13px",
-                color: "#7a6a55",
-                cursor: "pointer",
-                fontFamily: "inherit"
-              }}
-            >
-              {suggestion}
-            </button>
-          ))}
-        </div>
       </div>
 
-      {/* Input section */}
+      {/* Form section */}
       <div style={{
         maxWidth: "720px",
         margin: "0 auto",
         padding: "48px 24px"
       }}>
+
         <div style={{
           background: "#ffffff",
           borderRadius: "16px",
           border: "1px solid #d9cdb8",
-          padding: "24px",
+          padding: "32px",
           marginBottom: "16px",
           boxShadow: "0 2px 12px rgba(107,140,110,0.06)"
         }}>
-          <textarea
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
-            placeholder="Paste an ingredient list or ask about a specific ingredient..."
-            style={{
-              width: "100%",
-              minHeight: "120px",
-              border: "none",
-              outline: "none",
-              fontSize: "15px",
-              color: "#2a1f14",
-              resize: "vertical",
-              fontFamily: "inherit",
-              background: "transparent",
-              lineHeight: "1.6"
-            }}
-          />
-          <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "16px" }}>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "24px" }}>
+
+            <div>
+              <label style={{
+                display: "block",
+                fontSize: "12px",
+                fontWeight: "500",
+                color: "#7a6a55",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                marginBottom: "8px"
+              }}>
+                Skin Type
+              </label>
+              <input
+                value={skinType}
+                onChange={(e) => setSkinType(e.target.value)}
+                placeholder="oily, dry, combination, sensitive..."
+                style={{
+                  width: "100%",
+                  padding: "12px 16px",
+                  borderRadius: "10px",
+                  border: "1px solid #d9cdb8",
+                  background: "#f5f0ea",
+                  fontSize: "14px",
+                  color: "#2a1f14",
+                  outline: "none",
+                  fontFamily: "inherit"
+                }}
+              />
+            </div>
+
+            <div>
+              <label style={{
+                display: "block",
+                fontSize: "12px",
+                fontWeight: "500",
+                color: "#7a6a55",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                marginBottom: "8px"
+              }}>
+                Skin Concerns
+              </label>
+              <input
+                value={concern}
+                onChange={(e) => setConcern(e.target.value)}
+                placeholder="acne, aging, dark spots, dryness..."
+                style={{
+                  width: "100%",
+                  padding: "12px 16px",
+                  borderRadius: "10px",
+                  border: "1px solid #d9cdb8",
+                  background: "#f5f0ea",
+                  fontSize: "14px",
+                  color: "#2a1f14",
+                  outline: "none",
+                  fontFamily: "inherit"
+                }}
+              />
+            </div>
+
+            <div>
+              <label style={{
+                display: "block",
+                fontSize: "12px",
+                fontWeight: "500",
+                color: "#7a6a55",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                marginBottom: "8px"
+              }}>
+                Products You Own
+              </label>
+              <textarea
+                value={products}
+                onChange={(e) => setProducts(e.target.value)}
+                placeholder="niacinamide serum, retinol, vitamin C, moisturizer..."
+                style={{
+                  width: "100%",
+                  padding: "12px 16px",
+                  borderRadius: "10px",
+                  border: "1px solid #d9cdb8",
+                  background: "#f5f0ea",
+                  fontSize: "14px",
+                  color: "#2a1f14",
+                  minHeight: "100px",
+                  resize: "vertical",
+                  outline: "none",
+                  fontFamily: "inherit"
+                }}
+              />
+            </div>
+
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <button
               onClick={handleSubmit}
               disabled={loading}
@@ -147,11 +200,12 @@ export default function Home() {
                 fontFamily: "inherit"
               }}
             >
-              {loading ? "Analyzing..." : "Analyze →"}
+              {loading ? "Building routine..." : "Build My Routine →"}
             </button>
           </div>
         </div>
 
+        {/* Results */}
         {response && (
           <div style={{
             background: "#ffffff",
@@ -175,7 +229,7 @@ export default function Home() {
                 fontWeight: "600",
                 color: "#2a1f14"
               }}>
-                Analysis Results
+                Your Personalized Routine
               </span>
             </div>
             <div style={{ padding: "24px", lineHeight: "1.9", fontSize: "15px", color: "#2a1f14" }}>

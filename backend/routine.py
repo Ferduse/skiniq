@@ -14,8 +14,8 @@ class RoutineRequest(BaseModel):
     
 def build_routine(request: RoutineRequest, model="gpt-4o-mini"):
     messages=[
-        {"role": "system", "content": "You are a skincare expert. You receive the user's skin type, concerns and products. With this information that the user gave you, return an AM and PM routine with conflic watning."},
-        {"role": "user", "content": f"Skin type: {request.skin_type}. Concerns: {request.concerns}. Products I own: {request.products}"}    ]
+    {"role": "system", "content": "You are a skincare expert. You receive the user's skin type, concerns and products. With this information, return an AM and PM routine with conflict warnings. Also suggest additional products the user should consider adding to their routine based on their skin type and concerns."},          
+    {"role": "user", "content": f"Skin type: {request.skin_type}. Concerns: {request.concerns}. Products I own: {request.products}"}    ]
     response = client.chat.completions.create(
         model=model,
         messages=messages,
