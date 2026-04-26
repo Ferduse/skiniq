@@ -8,9 +8,12 @@ from routine import build_routine, RoutineRequest
 app = FastAPI()
 router = APIRouter()
 
-app.add_middleware( 
+app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://*.vercel.app"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://skiniq-plum.vercel.app"
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
