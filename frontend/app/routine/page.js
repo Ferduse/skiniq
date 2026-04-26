@@ -11,7 +11,7 @@ export default function Routine() {
 
   async function handleSubmit() {
     setLoading(true)
-    const result = await fetch("http://localhost:8000/routine", {
+    const result = await fetch("https://skiniq-production-e075.up.railway.app/routine", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ skin_type: skinType, concerns: concern, products: products })

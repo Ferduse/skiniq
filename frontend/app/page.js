@@ -9,7 +9,7 @@ export default function Home() {
 
   async function handleSubmit() {
     setLoading(true)
-    const result = await fetch("http://localhost:8000/analyze", {
+    const result = await fetch("https://skiniq-production-e075.up.railway.app/analyze", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt: ingredients })
