@@ -65,7 +65,7 @@ export default function Home() {
           margin: "0 auto 40px",
           lineHeight: "1.7"
         }}>
-          Paste any ingredient list and get an instant breakdown — safety scores, functions, and conflict warnings.
+          Decode ingredients. Ask anything. Know exactly what's going on your skin.
         </p>
 
         <div style={{

@@ -68,7 +68,7 @@ export default function Routine() {
           margin: "0 auto",
           lineHeight: "1.7"
         }}>
-          Tell us your skin type, concerns, and products — we'll build a personalized AM/PM routine with conflict warnings.
+          Tell us your skin type, concerns, and products, we'll build a personalized AM/PM routine with conflict warnings.
         </p>
       </div>
 
