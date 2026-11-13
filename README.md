@@ -1,5 +1,5 @@
 # SkinIQ
-![SkinIQ Backend Tests](https://github.com)
+[![SkinIQ Backend Tests](https://github.com/Ferduse/skiniq/actions/workflows/test.yml/badge.svg)](https://github.com/Ferduse/skiniq/actions/workflows/test.yml)
 
 An AI-powered skincare app that analyzes ingredients and builds personalized routines.
 
