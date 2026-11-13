@@ -1,4 +1,5 @@
 # SkinIQ
+![Backend CI Tests](https://github.com)
 
 An AI-powered skincare app that analyzes ingredients and builds personalized routines.
 
